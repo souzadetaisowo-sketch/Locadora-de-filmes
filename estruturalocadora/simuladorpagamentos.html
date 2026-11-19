@@ -1,11 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pagamento - LocaFlex</title>
+    <link rel="stylesheet" href="indexStyle.css">
+    <style>
+        /* Estilos extras apenas para organizar o formulário de pagamento */
+        .caixa-pagamento {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            color: #222;
+        }
+        .campo-form {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .campo-form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .campo-form select, .campo-form input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+        .regra-especial {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 14px;
+            text-align: left;
+        }
+        .resumo-valor {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .total-destaque {
+            font-size: 22px;
+            font-weight: bold;
+            color: #198754;
+        }
+        .btn-calcular {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>LocaFlex</h1>
+        <h1>Sua locadora dos seus filmes favoritos no precinho!</h1>
+        <h6>Finalize seu aluguel e aproveite a sessão.</h6>
     
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="catalogo.html">Catálogo Filmes</a>
+            <a href="cadastrocliente.html">Cadastro</a>
+            <a href="simuladorpagamentos.html" class="ativo">Pagamento</a>
+        </nav>    
+    </header>
+
+    <main>
+        <div class="caixa-pagamento">
+            <h2>Pagamento</h2>
+
+            <div class="regra-especial">
+                <strong>🍿 Regra Especial LocaFlex (Combo Maratona):</strong><br>
+                Alugando <strong>3 ou mais dias/unidades</strong>, você ganha <strong>15% de desconto</strong> no valor total!<br>
+                <em>(Filmes clássicos têm tarifa fixa promocional de R$ 8,00).</em>
+            </div>
+
+            <div class="campo-form">
+                <label for="filme">Escolha o Filme:</label>
+                <select id="filme" onchange="calcularTotal()">
+                    <option value="voz-do-silencio" data-preco="4.90" data-categoria="drama">A voz do silêncio (Drama) - R$ 4,90</option>
+                    <option value="jovens-bruxas" data-preco="4.90" data-categoria="terror">Jovens Bruxas (Terror) - R$ 4,90</option>
+                    <option value="festa-no-ceu" data-preco="4.90" data-categoria="animacao">Festa no céu (Animação) - R$ 4,90</option>
+                    <option value="edward-maos-de-tesoura" data-preco="4.90" data-categoria="classico">Edward mãos de tesoura (Clássico) - R$ 4,90</option>
+                </select>
+            </div>
+
+            <div class="campo-form">
+                <label for="quantidade">Quantidade (dias de aluguel ou cópias):</label>
+                <input type="number" id="quantidade" value="1" min="1" max="30" oninput="calcularTotal()">
+            </div>
+
+            <div class="campo-form">
+                <label for="formato">Formato de Mídia:</label>
+                <select id="formato" onchange="calcularTotal()">
+                    <option value="0">Digital / Streaming (Sem acréscimo)</option>
+                    <option value="4">DVD / Blu-ray Físico (+ R$ 4,00 taxa única)</option>
+                </select>
+            </div>
+
+            <div class="resumo-valor">
+                <p>Subtotal: <span id="subtotal">R$ 12,00</span></p>
+                <p>Desconto aplicado: <span id="desconto" style="color: #d63384;">R$ 0,00 (0%)</span></p>
+                <p class="total-destaque">Total a Pagar: <span id="total">R$ 12,00</span></p>
+            </div>
+
+            <button class="btn-calcular" onclick="finalizarAluguel()">Confirmar Aluguel</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 LocaFlex. Todos os direitos reservados.</p>
+        <nav>
+            <a href="sobre.html">Sobre a Locadora</a>
+        </nav>
+    </footer>
+
+    <script>
+        // Pega o filme escolhido na URL quando o usuário clica em "Alugar" na página inicial
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const filmeSelecionado = params.get('filme');
+            if (filmeSelecionado) {
+                const select = document.getElementById('filme');
+                select.value = filmeSelecionado;
+            }
+            calcularTotal();
+        };
+
+        function calcularTotal() {
+            const selectFilme = document.getElementById('filme');
+            const opcaoSelecionada = selectFilme.options[selectFilme.selectedIndex];
+            
+            const precoUnitario = parseFloat(opcaoSelecionada.getAttribute('data-preco'));
+            const quantidade = parseInt(document.getElementById('quantidade').value) || 1;
+            const taxaMidia = parseFloat(document.getElementById('formato').value);
+
+            // Cálculo base
+            let subtotal = (precoUnitario * quantidade) + taxaMidia;
+            let percentualDesconto = 0;
+
+            // REGRA ESPECIAL DO TEMA:
+            // Se alugar 3 ou mais unidades/dias, ganha 15% de desconto
+            if (quantidade >= 3) {
+                percentualDesconto = 0.15;
+            }
+
+            let valorDesconto = subtotal * percentualDesconto;
+            let totalFinal = subtotal - valorDesconto;
+
+            // Atualiza os textos na tela formatados em Real (R$)
+            document.getElementById('subtotal').innerText = subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('desconto').innerText = `${valorDesconto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} (${percentualDesconto * 100}%)`;
+            document.getElementById('total').innerText = totalFinal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function finalizarAluguel() {
+            const selectFilme = document.getElementById('filme');
+            const nomeFilme = selectFilme.options[selectFilme.selectedIndex].text.split(' - ')[0];
+            const total = document.getElementById('total').innerText;
+
+            alert(`Aluguel confirmado com sucesso!\n\nFilme: ${nomeFilme}\nValor Total: ${total}\n\nBom filme!`);
+        }
+    </script>
 </body>
 </html>
