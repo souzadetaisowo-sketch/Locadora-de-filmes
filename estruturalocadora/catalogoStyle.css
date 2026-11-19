@@ -238,7 +238,7 @@ h4 {
     box-shadow: 1px 1px 0px var(--marinho);
 }
 
-/* --- CATÁLOGO (50 FILMES) --- */
+/* --- CATÁLOGO (10 FILMES) --- */
 .controles-catalogo {
     max-width: 900px;
     margin: 0 auto 36px auto;
@@ -318,56 +318,16 @@ h4 {
     box-shadow: 9px 9px 0px var(--rosa);
 }
 
-/* Capas Estilo Fita VHS Retrô */
-.capa-vhs {
+/* Estilo padronizado das capas no catálogo */
+.card-catalogo img {
     width: 150px;
-    height: 200px;
+    height: 210px;
+    object-fit: cover;
     border: 3px solid var(--marinho);
     border-radius: 8px;
-    box-shadow: 5px 5px 0px var(--dourado);
+    box-shadow: 4px 4px 0px var(--dourado);
     margin-bottom: 16px;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: var(--branco);
-    position: relative;
-    overflow: hidden;
 }
-
-.capa-vhs span {
-    font-size: 0.7rem;
-    font-weight: 700;
-    background-color: rgba(0, 0, 0, 0.45);
-    padding: 2px 8px;
-    border-radius: 4px;
-    align-self: flex-start;
-    letter-spacing: 1px;
-}
-
-.capa-vhs strong {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.45rem;
-    letter-spacing: 1px;
-    line-height: 1.15;
-    text-shadow: 2px 2px 0px var(--marinho);
-}
-
-.capa-vhs small {
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: var(--dourado);
-    color: var(--marinho);
-    padding: 2px 8px;
-    border-radius: 4px;
-    align-self: flex-end;
-}
-
-.vhs-animacao { background: linear-gradient(135deg, #ff477e 0%, #ff9a5a 100%); }
-.vhs-drama    { background: linear-gradient(135deg, #0b132b 0%, #3a506b 100%); }
-.vhs-comedia  { background: linear-gradient(135deg, #f72585 0%, #7209b7 100%); }
-.vhs-aventura { background: linear-gradient(135deg, #1c2541 0%, #0088cc 100%); }
-.vhs-suspense { background: linear-gradient(135deg, #111111 0%, #800f2f 100%); }
 
 .tag-genero {
     font-size: 0.72rem;
@@ -459,6 +419,11 @@ h4 {
     background-color: var(--marinho);
     color: var(--dourado);
     box-shadow: 4px 4px 0px var(--rosa);
+}
+
+.btn-cadastrar:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--marinho);
 }
 
 /* --- RODAPÉ (FOOTER) --- */
