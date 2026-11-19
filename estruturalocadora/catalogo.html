@@ -1,11 +1,490 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Catálogo Completo (50 Filmes) - LocaFlex</title>
+    <link rel="stylesheet" href="indexStyle.css">
 </head>
 <body>
+    <header>
+        <h1>LocaFlex</h1>
+        <h1>Sua locadora dos seus filmes favoritos no precinho!</h1>
+        <h6>Entregamos a melhor qualidade para garantir a melhor experiência para você.</h6>
     
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="catalogo.html" class="ativo">Catálogo Filmes</a>
+            <a href="cadastrocliente.html">Cadastro</a>
+            <a href="simuladorpagamentos.html">Pagamento</a>
+        </nav>    
+    </header>
+
+    <main>
+        <h2>Catálogo Completo</h2>
+        <h4>50 títulos selecionados para maratonar no precinho!</h4>
+
+        <!-- Barra de Pesquisa e Filtros -->
+        <div class="controles-catalogo">
+            <input type="text" id="buscaFilme" placeholder="Buscar filme pelo nome..." onkeyup="filtrarFilmes()">
+            <div class="filtros-genero">
+                <button class="btn-filtro ativo" onclick="filtrarGenero('Todos', this)">Todos (50)</button>
+                <button class="btn-filtro" onclick="filtrarGenero('Animação', this)">Animação</button>
+                <button class="btn-filtro" onclick="filtrarGenero('Drama', this)">Drama</button>
+                <button class="btn-filtro" onclick="filtrarGenero('Comédia', this)">Comédia</button>
+                <button class="btn-filtro" onclick="filtrarGenero('Aventura', this)">Aventura / Ficção</button>
+                <button class="btn-filtro" onclick="filtrarGenero('Suspense', this)">Suspense / Terror</button>
+            </div>
+        </div>
+
+        <!-- Lista de 50 Filmes -->
+        <div class="lista-catalogo" id="listaCatalogo">
+
+            <!-- ANIMAÇÃO (1 a 12) -->
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #01</span><strong>A Viagem de Chihiro</strong><small>2001</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>A Viagem de Chihiro</h3>
+                <p>Fantasia, aventura mágica, amadurecimento - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #02</span><strong>O Castelo Animado</strong><small>2004</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>O Castelo Animado</h3>
+                <p>Romance, magia, maldição, fantasia - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #03</span><strong>Meu Amigo Totoro</strong><small>1988</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>Meu Amigo Totoro</h3>
+                <p>Família, natureza, espíritos da floresta - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #04</span><strong>Festa no Céu</strong><small>2014</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>Festa no Céu</h3>
+                <p>Comédia, música, folclore mexicano, romance - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #05</span><strong>Coraline</strong><small>2009</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>Coraline e o Mundo Secreto</h3>
+                <p>Fantasia sombria, mistério, stop-motion - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #06</span><strong>A Noiva Cadáver</strong><small>2005</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>A Noiva Cadáver</h3>
+                <p>Romance gótico, musical, stop-motion - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #07</span><strong>Homem-Aranha no Aranhaverso</strong><small>2018</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>Homem-Aranha no Aranhaverso</h3>
+                <p>Ação, multiverso, heróis, trilha sonora - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 5,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #08</span><strong>Toy Story</strong><small>1995</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>Toy Story</h3>
+                <p>Clássico, amizade, brinquedos, aventura - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #09</span><strong>O Rei Leão</strong><small>1994</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>O Rei Leão</h3>
+                <p>Clássico Disney, savana, musical, drama - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #10</span><strong>Shrek</strong><small>2001</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>Shrek</h3>
+                <p>Comédia, contos de fadas, sátira, aventura - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #11</span><strong>Wall-E</strong><small>2008</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>WALL-E</h3>
+                <p>Ficção científica, espaço, romance, ecologia - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Animação">
+                <div class="capa-vhs vhs-animacao"><span>VHS #12</span><strong>Your Name</strong><small>2016</small></div>
+                <span class="tag-genero">Animação</span>
+                <h3>Your Name (Kimi no Na wa)</h3>
+                <p>Anime, romance, troca de corpos, destino - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 5,90</button>
+            </div>
+
+            <!-- DRAMA & ROMANCE (13 a 24) -->
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #13</span><strong>A Voz do Silêncio</strong><small>2016</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>A Voz do Silêncio</h3>
+                <p>Superação, bullying, deficiência auditiva - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #14</span><strong>Edward Mãos de Tesoura</strong><small>1990</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>Edward Mãos de Tesoura</h3>
+                <p>Romance gótico, fantasia, clássico anos 90 - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #15</span><strong>O Show de Truman</strong><small>1998</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>O Show de Truman</h3>
+                <p>Sátira, reality show, liberdade, reflexão - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #16</span><strong>Sociedade dos Poetas Mortos</strong><small>1989</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>Sociedade dos Poetas Mortos</h3>
+                <p>Escola, poesia, inspiração, juventude - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #17</span><strong>Forrest Gump</strong><small>1994</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>Forrest Gump: O Contador de Histórias</h3>
+                <p>História, emoção, comédia dramática - <span class="badge-idade idade-14">14 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #18</span><strong>À Procura da Felicidade</strong><small>2006</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>À Procura da Felicidade</h3>
+                <p>Superação, pai e filho, história real - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #19</span><strong>As Vantagens de Ser Invisível</strong><small>2012</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>As Vantagens de Ser Invisível</h3>
+                <p>Adolescência, amizade, música, amadurecimento - <span class="badge-idade idade-14">14 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #20</span><strong>Brilho Eterno de uma Mente sem Lembranças</strong><small>2004</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>Brilho Eterno de uma Mente sem Lembranças</h3>
+                <p>Romance, memórias, ficção criativa - <span class="badge-idade idade-14">14 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #21</span><strong>Extraordinário</strong><small>2017</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>Extraordinário</h3>
+                <p>Empatia, escola, família, inclusão - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #22</span><strong>A Culpa é das Estrelas</strong><small>2014</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>A Culpa é das Estrelas</h3>
+                <p>Romance juvenil, livros, emoção - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #23</span><strong>Estrelas Além do Tempo</strong><small>2016</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>Estrelas Além do Tempo</h3>
+                <p>Ciência, NASA, história real, matemática - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Drama">
+                <div class="capa-vhs vhs-drama"><span>VHS #24</span><strong>Titanic</strong><small>1997</small></div>
+                <span class="tag-genero">Drama</span>
+                <h3>Titanic</h3>
+                <p>Romance épico, navio, clássico absoluto - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <!-- COMÉDIA (25 a 33) -->
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #25</span><strong>De Repente 30</strong><small>2004</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>De Repente 30</h3>
+                <p>Comédia romântica, anos 80/2000, magia - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #26</span><strong>Meninas Malvadas</strong><small>2004</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>Meninas Malvadas</h3>
+                <p>Comédia teen, ensino médio, icônico - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #27</span><strong>As Patricinhas de Beverly Hills</strong><small>1995</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>As Patricinhas de Beverly Hills</h3>
+                <p>Moda anos 90, comédia romântica, teen - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #28</span><strong>10 Coisas que Eu Odeio em Você</strong><small>1999</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>10 Coisas que Eu Odeio em Você</h3>
+                <p>Romance adolescente, Shakespeare, anos 90 - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #29</span><strong>Esqueceram de Mim</strong><small>1990</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>Esqueceram de Mim</h3>
+                <p>Família, armadilhas, clássico de Natal - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #30</span><strong>Matilda</strong><small>1996</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>Matilda</h3>
+                <p>Poderes mentais, livros, infância, clássico - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #31</span><strong>As Branquelas</strong><small>2004</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>As Branquelas</h3>
+                <p>Comédia policial, disfarces, humor - <span class="badge-idade idade-14">14 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #32</span><strong>Escola de Rock</strong><small>2003</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>Escola de Rock</h3>
+                <p>Música, banda escolar, comédia musical - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Comédia">
+                <div class="capa-vhs vhs-comedia"><span>VHS #33</span><strong>O Máskara</strong><small>1994</small></div>
+                <span class="tag-genero">Comédia</span>
+                <h3>O Máskara</h3>
+                <p>Fantasia, desenho vivo, clássico anos 90 - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <!-- AVENTURA & FICÇÃO (34 a 43) -->
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #34</span><strong>De Volta para o Futuro</strong><small>1985</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>De Volta para o Futuro</h3>
+                <p>Viagem no tempo, DeLorean, clássico anos 80 - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #35</span><strong>Jurassic Park</strong><small>1993</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>Jurassic Park: Parque dos Dinossauros</h3>
+                <p>Dinossauros, ficção científica, tensão - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #36</span><strong>Interestelar</strong><small>2014</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>Interestelar</h3>
+                <p>Espaço, buracos negros, tempo, ficção - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 5,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #37</span><strong>Harry Potter e a Pedra Filosofal</strong><small>2001</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>Harry Potter e a Pedra Filosofal</h3>
+                <p>Magia, escola de bruxos, fantasia - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #38</span><strong>O Senhor dos Anéis: A Sociedade do Anel</strong><small>2001</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>O Senhor dos Anéis: A Sociedade do Anel</h3>
+                <p>Fantasia épica, Terra-média, jornada - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 5,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #39</span><strong>Piratas do Caribe</strong><small>2003</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>Piratas do Caribe: A Maldição do Pérola Negra</h3>
+                <p>Mares, tesouros, ação, fantasia - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #40</span><strong>Jumanji</strong><small>1995</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>Jumanji</h3>
+                <p>Jogo de tabuleiro mágico, selva, ação - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #41</span><strong>Os Goonies</strong><small>1985</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>Os Goonies</h3>
+                <p>Caça ao tesouro, turma de amigos, anos 80 - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #42</span><strong>E.T. O Extraterrestre</strong><small>1982</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>E.T. O Extraterrestre</h3>
+                <p>Amizade espacial, clássico do cinema - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Aventura">
+                <div class="capa-vhs vhs-aventura"><span>VHS #43</span><strong>Homem-Aranha</strong><small>2002</small></div>
+                <span class="tag-genero">Aventura</span>
+                <h3>Homem-Aranha</h3>
+                <p>Super-herói, Nova York, origem clássica - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <!-- SUSPENSE & TERROR LEVE/MODERADO (44 a 50) -->
+            <div class="card-catalogo" data-genero="Suspense">
+                <div class="capa-vhs vhs-suspense"><span>VHS #44</span><strong>Jovens Bruxas</strong><small>1996</small></div>
+                <span class="tag-genero">Suspense</span>
+                <h3>Jovens Bruxas</h3>
+                <p>Magia teen, suspense sobrenatural, anos 90 - <span class="badge-idade idade-14">14 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Suspense">
+                <div class="capa-vhs vhs-suspense"><span>VHS #45</span><strong>O Sexto Sentido</strong><small>1999</small></div>
+                <span class="tag-genero">Suspense</span>
+                <h3>O Sexto Sentido</h3>
+                <p>Mistério sobrenatural, reviravolta - <span class="badge-idade idade-14">14 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Suspense">
+                <div class="capa-vhs vhs-suspense"><span>VHS #46</span><strong>Os Outros</strong><small>2001</small></div>
+                <span class="tag-genero">Suspense</span>
+                <h3>Os Outros</h3>
+                <p>Mansão antiga, neblina, suspense psicológico - <span class="badge-idade idade-14">14 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Suspense">
+                <div class="capa-vhs vhs-suspense"><span>VHS #47</span><strong>A Casa Monstro</strong><small>2006</small></div>
+                <span class="tag-genero">Suspense</span>
+                <h3>A Casa Monstro</h3>
+                <p>Mistério juvenil, Halloween, animação - <span class="badge-idade idade-10">10 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Suspense">
+                <div class="capa-vhs vhs-suspense"><span>VHS #48</span><strong>Abracadabra</strong><small>1993</small></div>
+                <span class="tag-genero">Suspense</span>
+                <h3>Abracadabra</h3>
+                <p>Bruxas de Salém, comédia, Halloween - <span class="badge-idade idade-livre">Livre</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 3,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Suspense">
+                <div class="capa-vhs vhs-suspense"><span>VHS #49</span><strong>Um Lugar Silencioso</strong><small>2018</small></div>
+                <span class="tag-genero">Suspense</span>
+                <h3>Um Lugar Silencioso</h3>
+                <p>Ficção científica, tensão, sobrevivência - <span class="badge-idade idade-14">14 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 5,90</button>
+            </div>
+
+            <div class="card-catalogo" data-genero="Suspense">
+                <div class="capa-vhs vhs-suspense"><span>VHS #50</span><strong>Beetlejuice</strong><small>1988</small></div>
+                <span class="tag-genero">Suspense</span>
+                <h3>Os Fantasmas se Divertem (Beetlejuice)</h3>
+                <p>Comédia sobrenatural, clássico anos 80 - <span class="badge-idade idade-12">12 anos</span></p>
+                <button onclick="window.location.href='simuladorpagamentos.html'">Alugar - R$ 4,90</button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 LocaFlex. Todos os direitos reservados.</p>
+        <nav>
+            <a href="sobre.html">Sobre a Locadora</a>
+        </nav>
+    </footer>
+
+    <!-- Script simples para busca e filtro de gênero funcionarem -->
+    <script>
+        function filtrarFilmes() {
+            const termo = document.getElementById('buscaFilme').value.toLowerCase();
+            const cards = document.querySelectorAll('.card-catalogo');
+            
+            cards.forEach(card => {
+                const titulo = card.querySelector('h3').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+                if (titulo.includes(termo) || desc.includes(termo)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filtrarGenero(genero, botao) {
+            document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('ativo'));
+            botao.classList.add('ativo');
+
+            const cards = document.querySelectorAll('.card-catalogo');
+            cards.forEach(card => {
+                if (genero === 'Todos' || card.getAttribute('data-genero') === genero) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
