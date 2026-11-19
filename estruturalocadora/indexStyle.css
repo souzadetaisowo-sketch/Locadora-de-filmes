@@ -1,0 +1,202 @@
+/* Importando fontes retrô do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --azul-marinho: #0f1b38;
+    --azul-escuro: #080f21;
+    --rosa-retro: #ff4d8d;
+    --rosa-claro: #ff85b3;
+    --creme-vintage: #fdf6e3;
+    --amarelo-vhs: #ffcc00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--creme-vintage);
+    color: var(--azul-marinho);
+    font-family: 'Space Mono', monospace;
+    /* Textura sutil de pontinhos estilo jornal/revista antiga */
+    background-image: radial-gradient(var(--rosa-claro) 0.75px, transparent 0.75px);
+    background-size: 20px 20px;
+}
+
+/* --- CABEÇALHO ESTILO LETREIRO DE CINEMA / VHS --- */
+header {
+    background-color: var(--azul-marinho);
+    color: var(--creme-vintage);
+    text-align: center;
+    padding: 40px 20px 25px;
+    border-bottom: 8px solid var(--rosa-retro);
+    box-shadow: 0 6px 0 var(--azul-escuro);
+}
+
+header h1:first-of-type {
+    font-family: 'Righteous', cursive;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--rosa-retro);
+    /* Sombra sólida dupla bem característica dos anos 80 */
+    text-shadow: 3px 3px 0px var(--amarelo-vhs), 6px 6px 0px var(--azul-escuro);
+    margin-bottom: 10px;
+}
+
+header h1:nth-of-type(2) {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--creme-vintage);
+    margin-bottom: 8px;
+}
+
+header h6 {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--rosa-claro);
+    margin-bottom: 25px;
+}
+
+/* --- MENU DE NAVEGAÇÃO --- */
+header nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header nav a {
+    text-decoration: none;
+    background-color: var(--rosa-retro);
+    color: var(--azul-escuro);
+    font-weight: 700;
+    padding: 10px 20px;
+    border: 3px solid var(--creme-vintage);
+    border-radius: 6px;
+    box-shadow: 4px 4px 0px var(--amarelo-vhs);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+header nav a:hover {
+    background-color: var(--amarelo-vhs);
+    color: var(--azul-marinho);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--rosa-retro);
+}
+
+/* --- TÍTULOS DA SEÇÃO PRINCIPAL --- */
+h2 {
+    font-family: 'Righteous', cursive;
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--azul-marinho);
+    margin-top: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--rosa-claro);
+}
+
+h4 {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--azul-marinho);
+    background-color: var(--amarelo-vhs);
+    display: table;
+    margin: 10px auto 35px;
+    padding: 6px 16px;
+    border: 2px solid var(--azul-marinho);
+    box-shadow: 3px 3px 0px var(--azul-marinho);
+}
+
+/* --- VITRINE E CARDS DOS FILMES --- */
+.vitrine-filmes {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+}
+
+.Filmes {
+    background-color: #ffffff;
+    border: 4px solid var(--azul-marinho);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    /* Sombra dura estilo quadrinhos/retrô */
+    box-shadow: 8px 8px 0px var(--rosa-retro);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Filmes:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px var(--azul-marinho);
+}
+
+.Filmes h3 {
+    font-family: 'Righteous', cursive;
+    font-size: 1.3rem;
+    color: var(--azul-marinho);
+    margin-bottom: 10px;
+    border-bottom: 2px dashed var(--rosa-retro);
+    padding-bottom: 8px;
+}
+
+.Filmes p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Etiqueta colorida sutil por gênero */
+.Drama h3 { color: var(--azul-marinho); }
+.Terror h3 { color: #b8004c; }
+.Animação h3 { color: #d97706; }
+
+.Filmes img {
+    width: 160px;
+    height: 220px;
+    object-fit: cover;
+    margin: 0 auto 18px;
+    border: 3px solid var(--azul-marinho);
+    border-radius: 4px;
+    box-shadow: 4px 4px 0px var(--amarelo-vhs);
+}
+
+/* --- BOTÃO ALUGAR --- */
+.Filmes nav button {
+    width: 100%;
+    background-color: var(--azul-marinho);
+    color: var(--creme-vintage);
+    font-family: 'Righteous', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px;
+    border: 3px solid var(--azul-marinho);
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--rosa-retro);
+    transition: all 0.15s ease;
+}
+
+.Filmes nav button:hover {
+    background-color: var(--rosa-retro);
+    color: var(--azul-escuro);
+    box-shadow: 4px 4px 0px var(--azul-marinho);
+}
+
+.Filmes nav button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--azul-marinho);
+}
