@@ -110,35 +110,370 @@ main {
     padding: 0 20px;
 }
 
-/* --- TÍTULO DO SIMULADOR --- */
+/* --- TÍTULO EM DESTAQUE --- */
 h2 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.8rem;
-    letter-spacing: 2px;
+    font-size: 3rem;
+    letter-spacing: 3px;
     text-align: center;
+    color: var(--branco);
+    background-color: var(--marinho);
+    width: fit-content;
+    margin: 0 auto 12px auto;
+    padding: 6px 32px;
+    border: 3px solid var(--rosa);
+    border-radius: 12px;
+    box-shadow: 5px 5px 0px var(--dourado);
+    text-shadow: 2px 2px 0px var(--rosa);
+}
+
+h4 {
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 700;
     color: var(--marinho);
+    background-color: var(--dourado);
+    width: fit-content;
+    margin: 0 auto 36px auto;
+    padding: 6px 18px;
+    border: 2px solid var(--marinho);
+    border-radius: 20px;
+    box-shadow: 3px 3px 0px var(--marinho);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- CARDS DOS FILMES (HOME) --- */
+.Filmes {
+    background-color: var(--branco);
+    border: 3px solid var(--marinho);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: 8px 8px 0px var(--marinho);
+    max-width: 420px;
+    margin: 0 auto 32px auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Filmes:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 11px 11px 0px var(--rosa);
+}
+
+.Filmes h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+    color: var(--marinho);
+    margin-bottom: 8px;
+}
+
+.Filmes p {
+    font-size: 0.9rem;
+    color: #4a5568;
     margin-bottom: 20px;
 }
 
-/* --- CAIXA / CARD DE PAGAMENTO --- */
+/* --- CLASSIFICAÇÃO INDICATIVA --- */
+.badge-idade {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    color: #fff;
+    margin-left: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.idade-livre { background-color: #00a859; }
+.idade-10 { background-color: #0088cc; }
+.idade-12 { background-color: #ffaa00; }
+.idade-14 { background-color: #ff6600; }
+
+.Filmes img {
+    display: block;
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 auto 22px auto;
+    border-radius: 8px;
+    border: 3px solid var(--marinho);
+    box-shadow: 5px 5px 0px var(--dourado);
+}
+
+/* --- BOTÕES DE ALUGAR --- */
+.Filmes nav button,
+.card-catalogo button {
+    width: 100%;
+    max-width: 220px;
+    background-color: var(--rosa);
+    color: var(--branco);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 18px;
+    border: 3px solid var(--marinho);
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--marinho);
+    transition: all 0.15s ease;
+}
+
+.Filmes nav button:hover,
+.card-catalogo button:hover {
+    background-color: var(--marinho);
+    color: var(--dourado);
+    box-shadow: 4px 4px 0px var(--rosa);
+}
+
+.Filmes nav button:active,
+.card-catalogo button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--marinho);
+}
+
+/* --- CATÁLOGO (10 FILMES) --- */
+.controles-catalogo {
+    max-width: 900px;
+    margin: 0 auto 36px auto;
+    text-align: center;
+}
+
+#buscaFilme {
+    width: 100%;
+    max-width: 480px;
+    padding: 14px 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--marinho);
+    background-color: var(--branco);
+    border: 3px solid var(--marinho);
+    border-radius: 50px;
+    box-shadow: 4px 4px 0px var(--rosa);
+    margin-bottom: 20px;
+    outline: none;
+}
+
+#buscaFilme:focus {
+    box-shadow: 4px 4px 0px var(--dourado);
+}
+
+.filtros-genero {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-filtro {
+    background-color: var(--branco);
+    color: var(--marinho);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border: 2px solid var(--marinho);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-filtro:hover,
+.btn-filtro.ativo {
+    background-color: var(--marinho);
+    color: var(--dourado);
+    border-color: var(--rosa);
+}
+
+.lista-catalogo {
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.card-catalogo {
+    background-color: var(--branco);
+    border: 3px solid var(--marinho);
+    border-radius: 16px;
+    padding: 22px 18px;
+    text-align: center;
+    box-shadow: 6px 6px 0px var(--marinho);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-catalogo:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--rosa);
+}
+
+/* Estilo padronizado das capas no catálogo */
+.card-catalogo img {
+    width: 150px;
+    height: 210px;
+    object-fit: cover;
+    border: 3px solid var(--marinho);
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px var(--dourado);
+    margin-bottom: 16px;
+}
+
+.tag-genero {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rosa);
+    margin-bottom: 4px;
+}
+
+.card-catalogo h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.65rem;
+    letter-spacing: 1px;
+    color: var(--marinho);
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.card-catalogo p {
+    font-size: 0.85rem;
+    color: #4a5568;
+    margin-bottom: 18px;
+}
+
+/* --- FORMULÁRIO DE CADASTRO --- */
+.form-cadastro {
+    background-color: var(--branco);
+    border: 3px solid var(--marinho);
+    border-radius: 16px;
+    padding: 32px 28px;
+    max-width: 460px;
+    margin: 0 auto 40px auto;
+    box-shadow: 8px 8px 0px var(--marinho);
+}
+
+.campo {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.campo label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--marinho);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--marinho);
+    background-color: var(--creme);
+    border: 2px solid var(--marinho);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input:focus {
+    border-color: var(--rosa);
+    box-shadow: 3px 3px 0px var(--rosa);
+}
+
+.btn-cadastrar {
+    width: 100%;
+    margin-top: 10px;
+    background-color: var(--rosa);
+    color: var(--branco);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 14px 20px;
+    border: 3px solid var(--marinho);
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--marinho);
+    transition: all 0.15s ease;
+}
+
+.btn-cadastrar:hover {
+    background-color: var(--marinho);
+    color: var(--dourado);
+    box-shadow: 4px 4px 0px var(--rosa);
+}
+
+.btn-cadastrar:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--marinho);
+}
+
+/* --- BARRA DE RESUMO DO CATÁLOGO (DINÂMICO) --- */
+.barra-resumo {
+    max-width: 1100px;
+    margin: 0 auto 28px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: var(--branco);
+    border: 3px solid var(--marinho);
+    border-radius: 16px;
+    padding: 16px 24px;
+    box-shadow: 6px 6px 0px var(--marinho);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--marinho);
+}
+
+.barra-resumo span {
+    color: var(--rosa);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    vertical-align: middle;
+}
+
+/* --- SIMULADOR DE PAGAMENTOS --- */
 .caixa-pagamento {
     background-color: var(--branco);
     border: 3px solid var(--marinho);
     border-radius: 16px;
     padding: 32px 28px;
-    max-width: 500px;
-    margin: 0 auto 50px auto;
+    max-width: 480px;
+    margin: 0 auto 40px auto;
     box-shadow: 8px 8px 0px var(--marinho);
-    text-align: center;
 }
 
-/* --- REGRA ESPECIAL (BOX DE AVISO) --- */
+.caixa-pagamento h2 {
+    margin-bottom: 24px;
+}
+
 .regra-especial {
     background-color: var(--creme);
     border: 2px dashed var(--marinho);
     border-radius: 10px;
     padding: 14px 16px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
     font-size: 0.88rem;
     color: var(--marinho);
     text-align: left;
@@ -148,15 +483,13 @@ h2 {
     color: var(--rosa);
 }
 
-/* --- CAMPOS DO FORMULÁRIO --- */
 .campo-form {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     text-align: left;
-    display: flex;
-    flex-direction: column;
 }
 
 .campo-form label {
+    display: block;
     font-weight: 700;
     font-size: 0.9rem;
     color: var(--marinho);
@@ -165,7 +498,7 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-.campo-form select, 
+.campo-form select,
 .campo-form input {
     width: 100%;
     padding: 12px 14px;
@@ -179,33 +512,60 @@ h2 {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.campo-form select:focus, 
+.campo-form select:focus,
 .campo-form input:focus {
     border-color: var(--rosa);
     box-shadow: 3px 3px 0px var(--rosa);
 }
 
-/* --- RESUMO DO VALOR --- */
+/* --- BOTÃO DE APLICAR CUPOM (TELE20) --- */
+.btn-aplicar-cupom {
+    background-color: var(--marinho);
+    color: var(--dourado);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 20px;
+    border: 2px solid var(--marinho);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--rosa);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn-aplicar-cupom:hover {
+    background-color: var(--rosa);
+    color: var(--branco);
+    box-shadow: 3px 3px 0px var(--marinho);
+}
+
+.btn-aplicar-cupom:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--marinho);
+}
+
 .resumo-valor {
     background-color: var(--creme);
     border: 2px solid var(--marinho);
     border-radius: 10px;
-    padding: 18px;
-    margin-top: 24px;
-    margin-bottom: 20px;
+    padding: 16px;
+    margin: 22px 0;
     text-align: left;
 }
 
 .resumo-valor p {
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--marinho);
     margin-bottom: 6px;
 }
 
 .total-destaque {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     letter-spacing: 1px;
     color: var(--rosa) !important;
     margin-top: 8px;
@@ -213,7 +573,6 @@ h2 {
     border-top: 2px dashed var(--marinho);
 }
 
-/* --- BOTÃO DE CONFIRMAR / CALCULAR --- */
 .btn-calcular {
     width: 100%;
     background-color: var(--rosa);

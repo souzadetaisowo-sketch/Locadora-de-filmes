@@ -4,63 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento - LocaFlex</title>
-    <link rel="stylesheet" href="indexStyle.css">
-    <style>
-        /* Estilos extras apenas para organizar o formulário de pagamento */
-        .caixa-pagamento {
-            max-width: 500px;
-            margin: 30px auto;
-            padding: 25px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            color: #222;
-        }
-        .campo-form {
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-        .campo-form label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .campo-form select, .campo-form input {
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #aaa;
-        }
-        .regra-especial {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 10px;
-            margin: 15px 0;
-            font-size: 14px;
-            text-align: left;
-        }
-        .resumo-valor {
-            background-color: #e9ecef;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            text-align: left;
-        }
-        .total-destaque {
-            font-size: 22px;
-            font-weight: bold;
-            color: #198754;
-        }
-        .btn-calcular {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="simuladorpagamentoStyle.css">
 </head>
 <body>
     <header>
@@ -83,7 +27,7 @@
             <div class="regra-especial">
                 <strong>🍿 Regra Especial LocaFlex (Combo Maratona):</strong><br>
                 Alugando <strong>3 ou mais dias/unidades</strong>, você ganha <strong>15% de desconto</strong> no valor total!<br>
-                <em>(Filmes clássicos têm tarifa fixa promocional de R$ 8,00).</em>
+                <em>Use o cupom <strong>TELE20</strong> para ganhar mais 20% de desconto!</em>
             </div>
 
             <div class="campo-form">
@@ -115,10 +59,20 @@
                 </select>
             </div>
 
+            <!-- NOVO CAMPO: Cupom de Desconto -->
+            <div class="campo-form">
+                <label for="cupom">Cupom de Desconto:</label>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="cupom" placeholder="Ex: TELE20" style="text-transform: uppercase;">
+                    <button type="button" onclick="calcularTotal()" class="btn-aplicar-cupom">Aplicar</button>
+                </div>
+                <small id="mensagemCupom" style="margin-top: 5px; font-weight: bold;"></small>
+            </div>
+
             <div class="resumo-valor">
-                <p>Subtotal: <span id="subtotal">R$ 12,00</span></p>
+                <p>Subtotal: <span id="subtotal">R$ 4,90</span></p>
                 <p>Desconto aplicado: <span id="desconto" style="color: #d63384;">R$ 0,00 (0%)</span></p>
-                <p class="total-destaque">Total a Pagar: <span id="total">R$ 12,00</span></p>
+                <p class="total-destaque">Total a Pagar: <span id="total">R$ 4,90</span></p>
             </div>
 
             <button class="btn-calcular" onclick="finalizarAluguel()">Confirmar Aluguel</button>
@@ -133,7 +87,7 @@
     </footer>
 
     <script>
-        // Pega o filme escolhido na URL quando o usuário clica em "Alugar" na página inicial
+        // Pega o filme escolhido na URL quando o usuário clica em "Alugar"
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
             const filmeSelecionado = params.get('filme');
@@ -156,18 +110,35 @@
             let subtotal = (precoUnitario * quantidade) + taxaMidia;
             let percentualDesconto = 0;
 
-            // REGRA ESPECIAL DO TEMA:
-            // Se alugar 3 ou mais unidades/dias, ganha 15% de desconto
+            // Regra especial: 3 ou mais unidades dão 15% de desconto
             if (quantidade >= 3) {
-                percentualDesconto = 0.15;
+                percentualDesconto += 0.15;
+            }
+
+            // Regra do Cupom TELE20: Adiciona mais 20% de desconto
+            const codigoCupom = document.getElementById('cupom').value.trim().toUpperCase();
+            const msgCupom = document.getElementById('mensagemCupom');
+
+            if (codigoCupom === "TELE20") {
+                percentualDesconto += 0.20;
+                msgCupom.style.color = "#00a859";
+                msgCupom.innerText = "✓ Cupom TELE20 aplicado com sucesso! (+20% off)";
+            } else if (codigoCupom !== "") {
+                msgCupom.style.color = "#ff477e";
+                msgCupom.innerText = "✕ Cupom inválido.";
+            } else {
+                msgCupom.innerText = "";
             }
 
             let valorDesconto = subtotal * percentualDesconto;
             let totalFinal = subtotal - valorDesconto;
 
+            // Garante que o total não fique negativo
+            if (totalFinal < 0) totalFinal = 0;
+
             // Atualiza os textos na tela formatados em Real (R$)
             document.getElementById('subtotal').innerText = subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            document.getElementById('desconto').innerText = `${valorDesconto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} (${percentualDesconto * 100}%)`;
+            document.getElementById('desconto').innerText = `${valorDesconto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} (${(percentualDesconto * 100).toFixed(0)}%)`;
             document.getElementById('total').innerText = totalFinal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
