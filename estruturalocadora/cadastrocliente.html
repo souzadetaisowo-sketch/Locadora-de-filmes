@@ -51,6 +51,13 @@
             </div>
 
             <button type="submit" class="btn-cadastrar">Finalizar Cadastro</button>
+            <script>
+                document.querySelector('.form-cadastro').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert("Cadastro realizado com sucesso! Agora você pode alugar seus filmes favoritos.");
+                    this.reset();
+                });
+            </script>
         </form>
     </main>
 
